@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Курсы — Language School</title>
+  <meta name="description" content="Каталог курсов языковой школы Language School: английский, немецкий, французский, испанский и китайский языки, онлайн и офлайн.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar--school sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-translate me-2"></i>Language School</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Переключить навигацию">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="courses.html">Курсы</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">О школе</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <li class="nav-item"><a class="nav-link" href="account.html"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a></li>
+      </ul>
+      <a href="enroll.html" class="btn btn--accent">Записаться на курс</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container mt-4">
+    <nav aria-label="Хлебные крошки">
+      <ol class="breadcrumb small mb-2">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Курсы</li>
+      </ol>
+    </nav>
+    <div class="page-header-block mb-4">
+      <h1 class="h3 fw-bold mb-2">Каталог курсов</h1>
+      <p class="text-secondary mb-0">Выберите язык, уровень и удобный формат. Не знаете свой уровень? Оставьте заявку — определим бесплатно.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Липкий фильтр -->
+      <aside class="col-lg-4 col-xl-3">
+        <form id="filterForm" class="card filters-panel border-0 shadow-sm">
+          <div class="card-body">
+            <h2 class="h6 text-uppercase text-secondary mb-3">Фильтры</h2>
+
+            <fieldset class="mb-3">
+              <legend class="fs-6 fw-bold">Язык</legend>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="lang" id="langEn" value="en"><label class="form-check-label small" for="langEn">🇬🇧 Английский</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="lang" id="langDe" value="de"><label class="form-check-label small" for="langDe">🇩🇪 Немецкий</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="lang" id="langFr" value="fr"><label class="form-check-label small" for="langFr">🇫🇷 Французский</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="lang" id="langEs" value="es"><label class="form-check-label small" for="langEs">🇪🇸 Испанский</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="lang" id="langZh" value="zh"><label class="form-check-label small" for="langZh">🇨🇳 Китайский</label></div>
+            </fieldset>
+
+            <div class="mb-3">
+              <label class="form-label fs-6 fw-bold" for="levelFilter">Уровень</label>
+              <select class="form-select form-select-sm" id="levelFilter">
+                <option value="">Любой уровень</option>
+                <option value="a1a2">A1–A2 (начальный)</option>
+                <option value="b1b2">B1–B2 (средний)</option>
+                <option value="c1c2">C1–C2 (продвинутый)</option>
+              </select>
+            </div>
+
+            <fieldset class="mb-3">
+              <legend class="fs-6 fw-bold">Формат</legend>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="format" id="formatOnline" value="online"><label class="form-check-label small" for="formatOnline">Онлайн</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="format" id="formatOffline" value="offline"><label class="form-check-label small" for="formatOffline">Офлайн</label></div>
+            </fieldset>
+
+            <fieldset class="mb-3">
+              <legend class="fs-6 fw-bold">Цена, ₽</legend>
+              <div class="row g-2">
+                <div class="col-6"><input type="number" class="form-control form-control-sm" id="priceFrom" placeholder="от" min="0"></div>
+                <div class="col-6"><input type="number" class="form-control form-control-sm" id="priceTo" placeholder="до" min="0"></div>
+              </div>
+            </fieldset>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-sm">Применить</button>
+              <button type="reset" class="btn btn-outline-secondary btn-sm">Сбросить</button>
+            </div>
+          </div>
+        </form>
+      </aside>
+
+      <!-- Список курсов -->
+      <section class="col-lg-8 col-xl-9">
+
+        <div class="course-toolbar">
+          <p class="course-toolbar__count">Найдено курсов: <span class="badge text-bg-primary" id="coursesCount">12</span></p>
+          <label class="course-toolbar__sort" for="sortSelect">
+            Сортировка:
+            <select class="form-select form-select-sm" id="sortSelect">
+              <option value="default" selected>По умолчанию</option>
+              <option value="asc">Сначала дешевле</option>
+              <option value="desc">Сначала дороже</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="noResults" class="alert alert-warning" hidden>
+          По выбранным фильтрам курсов не найдено. Измените условия или
+          <button id="resetFilters" type="button" class="btn btn-link p-0 align-baseline">сбросьте фильтры</button>.
+        </div>
+
+        <div class="course-list" id="courseList">
+
+          <article class="course-item" data-course-card data-language="en" data-level="a1a2" data-format="online offline" data-price="4900">
+            <div class="course-item__icon" aria-hidden="true">🇬🇧</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Общий английский</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">A1–A2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн и офлайн</span>
+              </div>
+              <p class="course-item__text">Говорение, грамматика и лексика с первого занятия.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>4 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 8 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">4 900 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Общий английский">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="en" data-level="b1b2" data-format="online" data-price="6900">
+            <div class="course-item__icon" aria-hidden="true">🇬🇧</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Деловой английский</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">B1–B2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн</span>
+              </div>
+              <p class="course-item__text">Переговоры, деловая переписка, презентации.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>3 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 6 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">6 900 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Деловой английский">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="en" data-level="c1c2" data-format="online offline" data-price="7900">
+            <div class="course-item__icon" aria-hidden="true">🇬🇧</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">IELTS: подготовка к экзамену</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">C1–C2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн и офлайн</span>
+              </div>
+              <p class="course-item__text">Все секции экзамена и пробные тесты каждые две недели.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>3 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>3 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 6 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">7 900 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="IELTS: подготовка к экзамену">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="de" data-level="a1a2" data-format="offline" data-price="5200">
+            <div class="course-item__icon" aria-hidden="true">🇩🇪</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Немецкий с нуля</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">A1–A2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-buildings me-1"></i>Офлайн</span>
+              </div>
+              <p class="course-item__text">Старт без знаний языка: произношение и живые диалоги.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>5 месяцев</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 8 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">5 200 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Немецкий с нуля">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="fr" data-level="a1a2" data-format="online" data-price="5400">
+            <div class="course-item__icon" aria-hidden="true">🇫🇷</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Французский для начинающих</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">A1–A2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн</span>
+              </div>
+              <p class="course-item__text">Произношение, базовая лексика, живые диалоги.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>5 месяцев</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 8 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">5 400 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Французский для начинающих">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item course-item--discount" data-course-card data-language="es" data-level="b1b2" data-format="online offline" data-price="4800">
+            <span class="course-item__badge course-item__badge--discount">Скидка</span>
+            <div class="course-item__icon" aria-hidden="true">🇪🇸</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Разговорный испанский</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">B1–B2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн и офлайн</span>
+              </div>
+              <p class="course-item__text">80% времени урока — говорение и живые ситуации.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>3 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 10 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price"><span class="course-item__price-old">5 600 ₽</span> 4 800 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Разговорный испанский">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="zh" data-level="a1a2" data-format="offline" data-price="6200">
+            <div class="course-item__icon" aria-hidden="true">🇨🇳</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Китайский с нуля</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">A1–A2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-buildings me-1"></i>Офлайн</span>
+              </div>
+              <p class="course-item__text">Тоны, иероглифика, HSK-ориентированная программа.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>6 месяцев</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 6 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">6 200 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Китайский с нуля">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="en" data-level="b1b2" data-format="online" data-price="7400">
+            <div class="course-item__icon" aria-hidden="true">💻</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Английский для IT</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">B1–B2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн</span>
+              </div>
+              <p class="course-item__text">Терминология, собеседования, документация и митинги.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>4 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 8 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">7 400 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Английский для IT">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="en" data-level="all" data-format="online offline" data-price="1200">
+            <div class="course-item__icon" aria-hidden="true">🌍</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Индивидуальные занятия</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">Любой уровень</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн и офлайн</span>
+              </div>
+              <p class="course-item__text">Персональная программа и гибкое расписание.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>по абонементу</li>
+                <li><i class="bi bi-calendar-week"></i>гибкий график</li>
+                <li><i class="bi bi-person"></i>1 на 1</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">1 200 ₽ <span class="course-item__price-period">/ занятие</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Индивидуальные занятия">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="en" data-level="a1a2" data-format="offline" data-price="3900">
+            <div class="course-item__icon" aria-hidden="true">🧒</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Детский английский (7–10 лет)</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">A1–A2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-buildings me-1"></i>Офлайн</span>
+              </div>
+              <p class="course-item__text">Игровая методика, песни, проекты и первые диалоги.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>9 месяцев</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 6 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">3 900 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Детский английский">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item" data-course-card data-language="fr" data-level="c1c2" data-format="online" data-price="7600">
+            <div class="course-item__icon" aria-hidden="true">🇫🇷</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Подготовка к DELF/DALF</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">C1–C2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн</span>
+              </div>
+              <p class="course-item__text">Стратегии всех секций и пробные экзамены.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>4 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>2 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 6 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price">7 600 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Подготовка к DELF/DALF">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-item course-item--discount" data-course-card data-language="de" data-level="b1b2" data-format="offline" data-price="7800">
+            <span class="course-item__badge course-item__badge--discount">Скидка</span>
+            <div class="course-item__icon" aria-hidden="true">🇩🇪</div>
+            <div class="course-item__body">
+              <h3 class="course-item__title">Подготовка к Goethe-Zertifikat</h3>
+              <div class="course-item__meta">
+                <span class="badge text-bg-light border">B1–B2</span>
+                <span class="badge text-bg-light border"><i class="bi bi-buildings me-1"></i>Офлайн</span>
+              </div>
+              <p class="course-item__text">Интенсив с экзаменатором института Гёте.</p>
+              <ul class="course-item__details">
+                <li><i class="bi bi-clock"></i>3 месяца</li>
+                <li><i class="bi bi-calendar-week"></i>3 раза в неделю</li>
+                <li><i class="bi bi-people"></i>до 6 человек</li>
+              </ul>
+            </div>
+            <div class="course-item__aside">
+              <p class="course-item__price"><span class="course-item__price-old">8 900 ₽</span> 7 800 ₽ <span class="course-item__price-period">/ мес</span></p>
+              <div class="course-item__actions">
+                <a href="course.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                <button type="button" class="btn btn-sm btn-primary" data-enroll="Подготовка к Goethe-Zertifikat">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="pb-5"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__col">
+        <p class="site-footer__brand"><i class="bi bi-translate me-2"></i>Language School</p>
+        <p class="site-footer__text">Языковая школа для детей и взрослых: общие курсы, подготовка к экзаменам, разговорные клубы. Онлайн и офлайн форматы.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Навигация в подвале">
+        <p class="site-footer__heading">Навигация</p>
+        <ul class="site-footer__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="courses.html">Курсы</a></li>
+          <li><a href="about.html">О школе</a></li>
+          <li><a href="account.html">Личный кабинет</a></li>
+          <li><a href="enroll.html">Записаться на курс</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Языки</p>
+        <ul class="site-footer__list">
+          <li class="site-footer__item--plain">🇬🇧 Английский</li>
+          <li class="site-footer__item--plain">🇩🇪 Немецкий</li>
+          <li class="site-footer__item--plain">🇫🇷 Французский</li>
+          <li class="site-footer__item--plain">🇪🇸 Испанский</li>
+          <li class="site-footer__item--plain">🇨🇳 Китайский</li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Контакты</p>
+        <ul class="site-footer__list">
+          <li><a href="tel:+74951234567"><i class="bi bi-telephone me-1"></i>+7 (495) 123-45-67</a></li>
+          <li><a href="mailto:hello@languageschool.ru"><i class="bi bi-envelope me-1"></i>hello@languageschool.ru</a></li>
+          <li class="site-footer__item--plain"><i class="bi bi-geo-alt me-1"></i>Москва, ул. Лингвистов, 12</li>
+          <li class="site-footer__item--plain"><i class="bi bi-clock me-1"></i>Пн–Пт 9:00–21:00, Сб–Вс 10:00–18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 Language School. Все права защищены.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Плавающая кнопка «Наверх» -->
+<a href="#" class="to-top" aria-label="Наверх"><i class="bi bi-arrow-up"></i></a>
+
+<!-- Модальное окно быстрой записи -->
+<div class="modal fade" id="enrollModal" tabindex="-1" aria-labelledby="enrollModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <form id="enrollModalForm" class="needs-validation" novalidate>
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title h5" id="enrollModalTitle">Быстрая запись</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="modalName" class="form-label">Имя *</label>
+            <input type="text" class="form-control" id="modalName" name="name" required minlength="2" placeholder="Ваше имя">
+            <div class="invalid-feedback">Укажите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modalPhone" class="form-label">Телефон *</label>
+            <input type="tel" class="form-control" id="modalPhone" name="phone" required pattern="\+7\s?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}" placeholder="+7 (900) 000-00-00">
+            <div class="invalid-feedback">Укажите телефон в формате +7 (900) 000-00-00.</div>
+          </div>
+          <fieldset class="mb-3">
+            <legend class="fs-6 form-label mb-2">Формат обучения</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="modalFormat" id="modalFormatOnline" value="online" checked>
+              <label class="form-check-label" for="modalFormatOnline">Онлайн</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="modalFormat" id="modalFormatOffline" value="offline">
+              <label class="form-check-label" for="modalFormatOffline">Офлайн</label>
+            </div>
+          </fieldset>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="modalAgree" required>
+            <label class="form-check-label small" for="modalAgree">Я согласен на обработку персональных данных *</label>
+            <div class="invalid-feedback">Для отправки заявки необходимо согласие.</div>
+          </div>
+          <div class="alert alert-success py-2 small mb-0" id="modalSuccess" hidden>
+            <i class="bi bi-check-circle me-1"></i>Заявка отправлена! Администратор свяжется с вами в ближайшее время.
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

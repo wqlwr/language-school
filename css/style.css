@@ -1,0 +1,846 @@
+/* =============================================================
+   Language School — языковая школа
+   Дополнительные стили поверх Bootstrap 5.3
+   Разделы:
+   1.  Переменные темы
+   2.  Базовые стили
+   3.  Навигация и кнопки
+   4.  Заголовки страниц, секции, фото hero
+   5.  Сетка статистики (Grid)
+   6.  Карточка курса для витрины (БЭМ)
+   7.  Иконки и аватары
+   8.  Новости, отзывы, преподаватели, услуги
+   9.  Каталог: панель инструментов и карточки-строки
+   10. Страница курса и фото-обложки
+   11. Личный кабинет
+   12. Контакты и карта
+   13. Подвал (Grid + Flex) и кнопка «Наверх»
+   14. Адаптивность
+   ============================================================= */
+
+/* 1. Переменные темы */
+:root {
+  --ls-primary: #3450d0;
+  --ls-primary-dark: #24389a;
+  --ls-primary-soft: #e9edfd;
+  --ls-accent: #d63a6e;        /* малиново-розовый акцент */
+  --ls-accent-dark: #b02857;   /* акцент при наведении */
+  --ls-accent-soft: #fdeaf2;   /* нежно-розовая подложка */
+  --ls-success: #16a34a;
+  --ls-danger: #dc2626;
+  --ls-dark: #1b2140;
+  --ls-bg: #f6f8fc;
+  --ls-muted: #6c757d;
+
+  /* Переопределение темы Bootstrap */
+  --bs-primary: var(--ls-primary);
+  --bs-primary-rgb: 52, 80, 208;
+  --bs-link-color: var(--ls-primary);
+  --bs-link-color-rgb: 52, 80, 208;
+  --bs-link-hover-color: var(--ls-primary-dark);
+  --bs-link-hover-color-rgb: 36, 56, 154;
+}
+
+/* 2. Базовые стили */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ls-bg);
+}
+
+main {
+  min-height: 55vh;
+}
+
+/* 3. Навигация (БЭМ-модификатор базового блока navbar) */
+.navbar--school {
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(27, 33, 64, 0.08);
+}
+
+.navbar--school .navbar-brand {
+  color: var(--ls-dark);
+  letter-spacing: -0.02em;
+}
+
+.navbar--school .navbar-brand i {
+  color: var(--ls-primary);
+}
+
+.navbar--school .nav-link {
+  color: var(--ls-dark);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  margin-inline: 0.125rem;
+}
+
+.navbar--school .nav-link:hover {
+  color: var(--ls-primary);
+  background-color: var(--ls-primary-soft);
+}
+
+.navbar--school .nav-link.active {
+  color: var(--ls-primary);
+  background-color: var(--ls-primary-soft);
+}
+
+/* Кнопка-модификатор БЭМ: .btn.btn--accent */
+.btn--accent {
+  --bs-btn-bg: var(--ls-accent);
+  --bs-btn-border-color: var(--ls-accent);
+  --bs-btn-color: #ffffff;
+  --bs-btn-hover-bg: var(--ls-accent-dark);
+  --bs-btn-hover-border-color: var(--ls-accent-dark);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-active-bg: var(--ls-accent-dark);
+  --bs-btn-active-border-color: var(--ls-accent-dark);
+  --bs-btn-active-color: #ffffff;
+  font-weight: 600;
+}
+
+/* Бейдж-модификатор: фирменный акцентный цвет */
+.badge--accent {
+  background-color: var(--ls-accent);
+  color: #ffffff;
+}
+
+/* 4. Заголовки страниц, секции, фото hero */
+.page-hero {
+  background: linear-gradient(120deg, var(--ls-primary-soft) 0%, var(--ls-accent-soft) 100%);
+  border-radius: 1.25rem;
+}
+
+.page-hero--center {
+  text-align: center;
+}
+
+/* Фото с детьми в hero-блоке главной: обрезка под слот */
+.page-hero__photo {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(27, 33, 64, 0.12);
+}
+
+.page-header-block {
+  background-color: var(--ls-primary-soft);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.section {
+  padding: 2.25rem 0;
+}
+
+.section__title {
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+}
+
+/* 5. Сетка статистики — CSS Grid (страница «О школе») */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(27, 33, 64, 0.06);
+}
+
+.stat-card__value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ls-primary);
+}
+
+.stat-card__label {
+  font-size: 0.8rem;
+  color: var(--ls-muted);
+}
+
+/* 6. Карточка курса для витрины (главная, похожие курсы) */
+.course-card {
+  position: relative;
+  border: 1px solid #e3e7f0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(27, 33, 64, 0.1);
+}
+
+/* Модификатор: скидка */
+.course-card--discount {
+  border-color: var(--ls-danger);
+}
+
+/* Flexbox: содержимое карточки колонкой, цена и кнопки прижаты вниз */
+.course-card__body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flexbox: бейджи языка и уровня */
+.course-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.course-card__title {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-card__text {
+  font-size: 0.875rem;
+  color: var(--ls-muted);
+}
+
+.course-card__footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.course-card__price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.course-card__price-period {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--ls-muted);
+}
+
+.course-card__price-old {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--ls-muted);
+  text-decoration: line-through;
+}
+
+.course-card--discount .course-card__price {
+  color: var(--ls-danger);
+}
+
+/* Flexbox: кнопки карточки в ряд */
+.course-card__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.course-card__actions .btn {
+  flex: 1 1 0;
+}
+
+/* Бейдж карточки: позиционирование в углу */
+.course-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  padding: 0.35em 0.7em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 0.4rem;
+  background-color: var(--ls-success);
+}
+
+.course-card__badge--discount {
+  background-color: var(--ls-danger);
+}
+
+/* 7. Иконки и аватары */
+.icon-box {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.9rem;
+  font-size: 1.4rem;
+  background-color: var(--ls-primary-soft);
+  color: var(--ls-primary);
+}
+
+/* Модификатор: маленькая иконка в списке контактов */
+.icon-box--sm {
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 1.3rem;
+  background-color: var(--ls-primary-soft);
+  color: var(--ls-primary);
+}
+
+/* Модификатор: увеличенный аватар */
+.avatar--lg {
+  width: 84px;
+  height: 84px;
+  font-size: 1.6rem;
+}
+
+/* 8. Новости, отзывы, преподаватели, услуги */
+.news-card {
+  border: 1px solid #e3e7f0;
+}
+
+.news-card__date {
+  display: block;
+  font-size: 0.78rem;
+  color: #8a91a5;
+  margin-bottom: 0.5rem;
+}
+
+.news-card__title {
+  font-size: 1rem;
+}
+
+.news-card__text {
+  font-size: 0.875rem;
+  color: var(--ls-muted);
+  margin: 0;
+}
+
+.review-card__author {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.review-card__rating {
+  color: var(--ls-accent);
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  color: var(--ls-accent);
+  letter-spacing: 2px;
+}
+
+/* Flexbox: карточка преподавателя колонкой по центру */
+.teacher-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.75rem 1rem;
+  text-align: center;
+}
+
+.teacher-card__name {
+  font-weight: 700;
+  margin: 0.5rem 0 0;
+}
+
+.teacher-card__subject {
+  font-size: 0.85rem;
+  color: var(--ls-muted);
+  margin: 0;
+}
+
+.service-card__title {
+  font-size: 1rem;
+}
+
+.service-card__text {
+  font-size: 0.875rem;
+  color: var(--ls-muted);
+}
+
+/* 9. Каталог: панель инструментов и карточки-строки */
+/* Липкий блок фильтров */
+.filters-panel {
+  position: sticky;
+  top: 86px;
+}
+
+/* Flexbox: счётчик слева, сортировка справа */
+.course-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.course-toolbar__count {
+  margin: 0;
+}
+
+.course-toolbar__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--ls-muted);
+}
+
+.course-toolbar__sort .form-select {
+  width: auto;
+}
+
+/* Grid: список карточек в один столбец */
+.course-list {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Flexbox: горизонтальная карточка курса.
+   Увеличенный отступ сверху резервирует место под бейдж «Скидка»,
+   чтобы он не накладывался на цену. */
+.course-item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 2.75rem 1.25rem 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid #e3e7f0;
+  border-radius: 1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.course-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(27, 33, 64, 0.1);
+}
+
+/* Модификатор: скидка — цветная левая рамка */
+.course-item--discount {
+  border-left: 4px solid var(--ls-danger);
+}
+
+.course-item__icon {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #dfe6ff 0%, var(--ls-accent-soft) 100%);
+}
+
+.course-item__body {
+  flex: 1 1 320px;
+}
+
+.course-item__title {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-item__text {
+  font-size: 0.9rem;
+  color: var(--ls-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* Flexbox: параметры курса в строку */
+.course-item__details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--ls-muted);
+}
+
+.course-item__details i {
+  color: var(--ls-primary);
+  margin-right: 0.25rem;
+}
+
+/* Flexbox: цена и кнопки справа, прижаты к краям */
+.course-item__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-left: auto;
+  text-align: right;
+}
+
+.course-item__price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.course-item__price-period {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--ls-muted);
+}
+
+.course-item__price-old {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--ls-muted);
+  text-decoration: line-through;
+}
+
+.course-item--discount .course-item__price {
+  color: var(--ls-danger);
+}
+
+.course-item__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Бейдж карточки: позиционирование в углу */
+.course-item__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  padding: 0.35em 0.7em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 0.4rem;
+  background-color: var(--ls-success);
+}
+
+.course-item__badge--discount {
+  background-color: var(--ls-danger);
+}
+
+/* 10. Страница курса и фото-обложки */
+/* Фото-обложка курса и школы: обрезка под слот через object-fit */
+.course-cover {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+/* Модификатор: маленькая обложка на странице «О школе» */
+.course-cover--small {
+  height: 180px;
+}
+
+/* Grid: список преимуществ курса */
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+}
+
+.features__icon {
+  color: var(--ls-success);
+  margin-right: 0.5rem;
+}
+
+/* Grid: шаги (программа курса, поступление) */
+.steps {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: grid;
+  gap: 0.6rem;
+  color: var(--ls-muted);
+}
+
+.steps__item::marker {
+  color: var(--ls-primary);
+  font-weight: 700;
+}
+
+/* 11. Личный кабинет */
+/* Flexbox: шапка кабинета */
+.account-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.account-header__title {
+  font-size: 1.35rem;
+  margin-bottom: 0.15rem;
+}
+
+.account-header__subtitle {
+  font-size: 0.85rem;
+  color: var(--ls-muted);
+  margin: 0;
+}
+
+/* Flexbox: действия прижаты вправо */
+.account-header__actions {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Grid: данные профиля под шапкой кабинета */
+.account-profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e3e7f0;
+}
+
+/* Данные профиля в режиме просмотра */
+.profile-info__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ls-muted);
+  margin-bottom: 0.2rem;
+}
+
+.profile-info__value {
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Блоки кабинета идут последовательно друг за другом */
+.account-section {
+  margin-bottom: 2.5rem;
+}
+
+.account-section__title {
+  margin-bottom: 1rem;
+}
+
+/* Модификаторы прогресс-баров и таблицы */
+.progress--thin {
+  height: 10px;
+}
+
+.progress-bar--25 {
+  width: 25%;
+}
+
+.progress-bar--68 {
+  width: 68%;
+}
+
+.table-col--progress {
+  min-width: 160px;
+}
+
+/* 12. Контакты и карта */
+/* Grid: список контактов, внутри каждого пункта — Flex */
+.contact-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.contact-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-list__label {
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.contact-list__value {
+  margin: 0;
+}
+
+/* Настоящая карта: Leaflet + Esri, без рекламы */
+.map-frame {
+  position: relative;
+  z-index: 0; /* изолируем карту, чтобы она не перекрывала липкую шапку */
+  width: 100%;
+  height: 380px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* 13. Подвал — CSS Grid для колонок, Flex для нижней строки */
+.site-footer {
+  background-color: var(--ls-dark);
+  color: #a9b1d6;
+  padding: 3rem 0 1.5rem;
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: 2rem;
+}
+
+.site-footer__brand {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.site-footer__text {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Кнопка записи в подвале */
+.site-footer__cta {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.site-footer__heading {
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.75rem;
+}
+
+.site-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+}
+
+.site-footer__list a {
+  color: #cfd6f2;
+  text-decoration: none;
+}
+
+.site-footer__list a:hover {
+  color: #ffffff;
+}
+
+/* Модификатор пункта без ссылки */
+.site-footer__item--plain {
+  color: #a9b1d6;
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-top: 1px solid #363d5c;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.site-footer__bottom a {
+  color: #cfd6f2;
+  text-decoration: none;
+}
+
+.site-footer__bottom a:hover {
+  color: #ffffff;
+}
+
+/* Плавающая кнопка «Наверх»: фиксированное позиционирование,
+   всегда видна при прокрутке страницы */
+.to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1040;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #ffffff;
+  background-color: var(--ls-primary);
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(27, 33, 64, 0.2);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.to-top:hover {
+  color: #ffffff;
+  background-color: var(--ls-primary-dark);
+  transform: translateY(-3px);
+}
+
+/* 14. Адаптивность */
+@media (max-width: 991.98px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-header__actions {
+    margin-left: 0;
+  }
+
+  .page-hero__photo {
+    height: 240px;
+  }
+
+  /* Блок цены и кнопок растягивается на всю ширину карточки курса */
+  .course-item__aside {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+  }
+}

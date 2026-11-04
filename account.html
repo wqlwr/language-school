@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет — Language School</title>
+  <meta name="description" content="Личный кабинет ученика Language School: мои курсы, расписание занятий и данные профиля.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar--school sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-translate me-2"></i>Language School</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Переключить навигацию">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Курсы</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">О школе</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a></li>
+      </ul>
+      <a href="enroll.html" class="btn btn--accent">Записаться на курс</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container mt-4 pb-5">
+
+    <!-- Шапка кабинета: статус ученика + все данные профиля -->
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        <div class="account-header">
+          <span class="avatar avatar--lg"><i class="bi bi-person-fill"></i></span>
+          <div class="account-header__info">
+            <h1 class="account-header__title">Ученик</h1>
+            <p class="account-header__subtitle">Учится с сентября 2026 · Текущий уровень: A2+</p>
+          </div>
+          <div class="account-header__actions">
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal">
+              <i class="bi bi-pencil-square me-1"></i>Редактировать профиль
+            </button>
+            <a href="courses.html" class="btn btn-sm btn-outline-primary">Записаться ещё</a>
+            <a href="index.html" class="btn btn-sm btn-outline-secondary">Выйти</a>
+          </div>
+        </div>
+        <div class="account-profile">
+          <div class="account-profile__item">
+            <p class="profile-info__label">Имя</p>
+            <p class="profile-info__value">Ученик</p>
+          </div>
+          <div class="account-profile__item">
+            <p class="profile-info__label">E-mail</p>
+            <p class="profile-info__value">student@languageschool.ru</p>
+          </div>
+          <div class="account-profile__item">
+            <p class="profile-info__label">Телефон</p>
+            <p class="profile-info__value">+7 (900) 123-45-67</p>
+          </div>
+          <div class="account-profile__item">
+            <p class="profile-info__label">Уведомления</p>
+            <p class="profile-info__value">E-mail и SMS включены</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Мои курсы -->
+    <section class="account-section" aria-labelledby="accountCoursesTitle">
+      <h2 class="account-section__title h5" id="accountCoursesTitle"><i class="bi bi-book me-2 text-primary"></i>Мои курсы</h2>
+      <div class="card border-0 shadow-sm"><div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <caption class="visually-hidden">Мои курсы и прогресс обучения</caption>
+            <thead class="table-light">
+              <tr><th scope="col">Курс</th><th scope="col">Преподаватель</th><th scope="col">Расписание</th><th scope="col" class="table-col--progress">Прогресс</th><th scope="col">Статус</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Общий английский</strong><br><span class="small text-secondary">Уровень A2 → B1</span></td>
+                <td>Елена Соколова</td>
+                <td>Пн, Ср 19:00</td>
+                <td><div class="progress progress--thin" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar progress-bar--68">68%</div></div></td>
+                <td><span class="badge text-bg-success">Активен</span></td>
+              </tr>
+              <tr>
+                <td><strong>IELTS: подготовка</strong><br><span class="small text-secondary">Экзамен 14 февраля 2027</span></td>
+                <td>Ольга Виноградова</td>
+                <td>Сб 12:00</td>
+                <td><div class="progress progress--thin" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar bg-info progress-bar--25">25%</div></div></td>
+                <td><span class="badge text-bg-success">Активен</span></td>
+              </tr>
+              <tr>
+                <td><strong>Разговорный клуб</strong><br><span class="small text-secondary">Уровень B1+</span></td>
+                <td>Мария Лебедева</td>
+                <td>Пт 18:30</td>
+                <td><span class="small text-secondary">Без прогресса</span></td>
+                <td><span class="badge text-bg-secondary">Клуб</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- Расписание -->
+    <section class="account-section" aria-labelledby="accountScheduleTitle">
+      <h2 class="account-section__title h5" id="accountScheduleTitle"><i class="bi bi-calendar-week me-2 text-primary"></i>Расписание</h2>
+      <div class="card border-0 shadow-sm"><div class="card-body p-4">
+        <p class="text-secondary small mb-3">Неделя 2–7 ноября 2026</p>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <caption class="visually-hidden">Расписание занятий на неделю</caption>
+            <thead class="table-light">
+              <tr><th scope="col">Дата</th><th scope="col">Время</th><th scope="col">Курс</th><th scope="col">Преподаватель</th><th scope="col">Формат</th><th scope="col">Где</th><th scope="col">Статус</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Пн, 2 ноября</td><td>19:00–20:00</td><td>Общий английский</td><td>Елена Соколова</td>
+                <td><span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн</span></td>
+                <td><a href="#">Ссылка на занятие</a></td>
+                <td><span class="badge badge--accent">Идёт</span></td>
+              </tr>
+              <tr>
+                <td>Ср, 4 ноября</td><td>19:00–20:00</td><td>Общий английский</td><td>Елена Соколова</td>
+                <td><span class="badge text-bg-light border"><i class="bi bi-camera-video me-1"></i>Онлайн</span></td>
+                <td><a href="#">Ссылка на занятие</a></td>
+                <td><span class="badge text-bg-secondary">Запланировано</span></td>
+              </tr>
+              <tr>
+                <td>Пт, 6 ноября</td><td>18:30–20:00</td><td>Разговорный клуб</td><td>Мария Лебедева</td>
+                <td><span class="badge text-bg-light border"><i class="bi bi-buildings me-1"></i>Офлайн</span></td>
+                <td>Аудитория 3</td>
+                <td><span class="badge text-bg-secondary">Запланировано</span></td>
+              </tr>
+              <tr>
+                <td>Сб, 7 ноября</td><td>12:00–14:00</td><td>IELTS: подготовка</td><td>Ольга Виноградова</td>
+                <td><span class="badge text-bg-light border"><i class="bi bi-buildings me-1"></i>Офлайн</span></td>
+                <td>Аудитория 5</td>
+                <td><span class="badge text-bg-secondary">Запланировано</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div></div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Модальное окно редактирования профиля -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 shadow">
+      <form id="profileForm" class="needs-validation" novalidate>
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title h5" id="profileModalTitle">Редактирование профиля</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-success js-form-success" hidden>
+            <i class="bi bi-check-circle me-1"></i>Данные профиля сохранены.
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="profileName">Имя и фамилия *</label>
+              <input type="text" class="form-control" id="profileName" value="Ученик" required minlength="2">
+              <div class="invalid-feedback">Укажите имя.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="profileEmail">E-mail *</label>
+              <input type="email" class="form-control" id="profileEmail" value="student@languageschool.ru" required>
+              <div class="invalid-feedback">Укажите корректный e-mail.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="profilePhone">Телефон *</label>
+              <input type="tel" class="form-control" id="profilePhone" value="+7 (900) 123-45-67" required pattern="\+7\s?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}">
+              <div class="invalid-feedback">Укажите телефон в формате +7 (900) 000-00-00.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="profilePassword">Новый пароль</label>
+              <input type="password" class="form-control" id="profilePassword" minlength="6" placeholder="Оставьте пустым, если не менять">
+              <div class="invalid-feedback">Пароль должен содержать минимум 6 символов.</div>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="notifyEmail" checked>
+                <label class="form-check-label" for="notifyEmail">Уведомления об оценках и прогрессе на e-mail</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="notifySms" checked>
+                <label class="form-check-label" for="notifySms">SMS-напоминания о занятиях</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__col">
+        <p class="site-footer__brand"><i class="bi bi-translate me-2"></i>Language School</p>
+        <p class="site-footer__text">Языковая школа для детей и взрослых: общие курсы, подготовка к экзаменам, разговорные клубы. Онлайн и офлайн форматы.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Навигация в подвале">
+        <p class="site-footer__heading">Навигация</p>
+        <ul class="site-footer__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="courses.html">Курсы</a></li>
+          <li><a href="about.html">О школе</a></li>
+          <li><a href="account.html">Личный кабинет</a></li>
+          <li><a href="enroll.html">Записаться на курс</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Языки</p>
+        <ul class="site-footer__list">
+          <li class="site-footer__item--plain">🇬🇧 Английский</li>
+          <li class="site-footer__item--plain">🇩🇪 Немецкий</li>
+          <li class="site-footer__item--plain">🇫🇷 Французский</li>
+          <li class="site-footer__item--plain">🇪🇸 Испанский</li>
+          <li class="site-footer__item--plain">🇨🇳 Китайский</li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Контакты</p>
+        <ul class="site-footer__list">
+          <li><a href="tel:+74951234567"><i class="bi bi-telephone me-1"></i>+7 (495) 123-45-67</a></li>
+          <li><a href="mailto:hello@languageschool.ru"><i class="bi bi-envelope me-1"></i>hello@languageschool.ru</a></li>
+          <li class="site-footer__item--plain"><i class="bi bi-geo-alt me-1"></i>Москва, ул. Лингвистов, 12</li>
+          <li class="site-footer__item--plain"><i class="bi bi-clock me-1"></i>Пн–Пт 9:00–21:00, Сб–Вс 10:00–18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 Language School. Все права защищены.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Плавающая кнопка «Наверх» -->
+<a href="#" class="to-top" aria-label="Наверх"><i class="bi bi-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
