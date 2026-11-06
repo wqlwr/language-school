@@ -440,17 +440,15 @@ main {
   border-left: 4px solid var(--ls-danger);
 }
 
-.course-item__icon {
-  width: 72px;
-  height: 72px;
+/* Миниатюра курса: обрезка под квадратный слот */
+.course-item__img {
+  width: 96px;
+  height: 96px;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.4rem;
+  object-fit: cover;
   border-radius: 0.9rem;
-  background: linear-gradient(135deg, #dfe6ff 0%, var(--ls-accent-soft) 100%);
 }
+
 
 .course-item__body {
   flex: 1 1 320px;
@@ -843,4 +841,10 @@ main {
     align-items: center;
     text-align: left;
   }
+}
+
+/* Кнопка «Записаться на курс» под контактами в подвале */
+.site-footer__cta {
+  display: inline-block;
+  margin-top: 1rem;
 }
