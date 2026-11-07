@@ -20,12 +20,14 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="courses.html">Курсы</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Курсы</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">О школе</a></li>
         <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-        <li class="nav-item"><a class="nav-link" href="account.html"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a></li>
       </ul>
-      <a href="enroll.html" class="btn btn--accent">Записаться на курс</a>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="enroll.html" class="btn btn--accent">Записаться на курс</a>
+        <a href="account.html" class="btn btn-outline-primary active" aria-current="page"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -443,10 +445,10 @@
       <div class="site-footer__col">
         <p class="site-footer__heading">Контакты</p>
         <ul class="site-footer__list">
-          <li><a href="tel:+74951234567"><i class="bi bi-telephone me-1"></i>+7 (495) 123-45-67</a></li>
-          <li><a href="mailto:hello@languageschool.ru"><i class="bi bi-envelope me-1"></i>hello@languageschool.ru</a></li>
           <li class="site-footer__item--plain"><i class="bi bi-geo-alt me-1"></i>Москва, ул. Лингвистов, 12</li>
+          <li><a href="tel:+74951234567"><i class="bi bi-telephone me-1"></i>+7 (495) 123-45-67</a></li>
           <li class="site-footer__item--plain"><i class="bi bi-clock me-1"></i>Пн–Пт 9:00–21:00, Сб–Вс 10:00–18:00</li>
+          <li><a href="mailto:hello@languageschool.ru"><i class="bi bi-envelope me-1"></i>hello@languageschool.ru</a></li>
         </ul>
         <a href="enroll.html" class="btn btn--accent btn-sm site-footer__cta">Записаться на курс</a>
       </div>
@@ -458,7 +460,7 @@
 </footer>
 
 <!-- Плавающая кнопка «Наверх» -->
-<a href="#" class="to-top" aria-label="Наверх"><i class="bi bi-arrow-up"></i></a>
+<a href="#" class="to-top" aria-label="Наверх">A</a>
 
 <!-- Модальное окно быстрой записи -->
 <div class="modal fade" id="enrollModal" tabindex="-1" aria-labelledby="enrollModalTitle" aria-hidden="true">
