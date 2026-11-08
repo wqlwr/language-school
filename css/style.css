@@ -329,10 +329,6 @@ main {
   font-size: 1.6rem;
 }
 
-/* 8. Новости, отзывы, преподаватели, услуги */
-.news-card {
-  border: 1px solid #e3e7f0;
-}
 
 .news-card__date {
   display: block;
@@ -870,4 +866,93 @@ main {
   background-color: var(--ls-primary-dark);
   border-color: var(--ls-primary-dark);
   color: #ffffff;
+}
+
+/* Карточка новости: обрезаем всё, что вылезает за скругления */
+.news-card {
+  overflow: hidden;
+  border: 1px solid #e3e7f0;
+}
+
+/* Фото новости: фиксированная высота + обрезка под слот */
+.news-card__img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+/* Карточка отзыва: реагирует на наведение */
+.review-card {
+  border: 1px solid #e3e7f0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(27, 33, 64, 0.1);
+}
+
+/* Шапка отзыва: аватар с инициалами + имя и курс */
+.review-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.review-card__avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background-color: var(--ls-accent-soft);
+  color: var(--ls-accent);
+}
+
+.review-card__name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.review-card__course {
+  font-size: 0.78rem;
+  color: var(--ls-muted);
+  margin: 0;
+}
+
+.review-card__text {
+  font-size: 0.875rem;
+  color: var(--ls-muted);
+  margin: 0;
+}
+
+/* Карточка преподавателя: реагирует на наведение */
+.teacher-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.teacher-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(27, 33, 64, 0.1);
+}
+
+/* Фото преподавателя: круглое, обрезка под слот */
+.teacher-card__photo {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Краткая биография в карточке преподавателя */
+.teacher-card__bio {
+  font-size: 0.85rem;
+  color: var(--ls-muted);
+  margin: 0;
 }
